@@ -118,6 +118,10 @@ let selected
 let operator
 let isValid = false
 
+function containsAnyLetter(str) {
+   return /[a-zA-Z]/.test(str);
+ }
+
 function menu() {
    console.log("Please select an option -")
    console.log("Press 1 to add")
@@ -127,42 +131,49 @@ function menu() {
    console.log("Press 5 to quit.")
 }
 
-menu()
-
 function promptNumbers() {
    let num1 = Number(prompt("Enter first number : "))
    let num2 = Number(prompt("Enter the second number: "))
-   if (operator == "+") {
-      log(num1 + num2)
-   } else if (operator == "-") {
-      log(num1 - num2)
-   } else if (operator == "*") {
-      log(num1 * num2)
-   } else if (operator == "/") {
-      log(num1 / num2)
+   if (containsAnyLetter(num1) || containsAnyLetter(num2)) {
+      console.log("This contains numbers . . .")
+   } else {
+      if (operator == "+") {
+         log(num1 + num2)
+      } else if (operator == "-") {
+         log(num1 - num2)
+      } else if (operator == "*") {
+         log(num1 * num2)
+      } else if (operator == "/") {
+         log(num1 / num2)
+      }
    }
    menu()
 }
 
-do {
-   selected = prompt("")
-   if (Number(selected) == 1) {
-      operator = "+"
-      promptNumbers(operator)
-   } else if (Number(selected) == 2) {
-      operator = "-"
-      promptNumbers(operator)
-   } else if (Number(selected) == 3) {
-      operator = "*"
-      promptNumbers(operator)
-   } else if (Number(selected) == 4) {
-      operator = "/"
-      promptNumbers(operator)
-   } else if (Number(selected) == 5) {
-      log("Quitting.")
-      break
-   } else {
-      log("Please select a valid input.")
-   }
-} while (!isValid)
+function calculator() {
+   do {
+      selected = prompt("")
+      if (Number(selected) == 1) {
+         operator = "+"
+         promptNumbers(operator)
+      } else if (Number(selected) == 2) {
+         operator = "-"
+         promptNumbers(operator)
+      } else if (Number(selected) == 3) {
+         operator = "*"
+         promptNumbers(operator)
+      } else if (Number(selected) == 4) {
+         operator = "/"
+         promptNumbers(operator)
+      } else if (Number(selected) == 5) {
+         log("Quitting.")
+         break
+      } else {
+         log("Please select a valid input.")
+      }
+   } while (!isValid)
+   
+}
 
+menu()
+calculator()
