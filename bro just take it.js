@@ -1,7 +1,3 @@
-//  --Made by Marc Desir (except 1 function i took from stackoverflow hehe)
-// -- CSET 105
-
-const prompt = require("prompt-sync")();
 
 // Variables 
 
