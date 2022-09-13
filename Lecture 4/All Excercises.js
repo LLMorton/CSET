@@ -1,5 +1,3 @@
-const prompt = require("prompt-sync")();
-
 // Excercise 1a
 function Max(...args) {
    let greatest
